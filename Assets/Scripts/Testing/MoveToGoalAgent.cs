@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
+using Unity.MLAgents.Actuators;
 
 public class MoveToGoalAgent : Agent
 {
@@ -11,31 +12,33 @@ public class MoveToGoalAgent : Agent
 
     public override void OnEpisodeBegin()
     {
-        transform.position = Vector3.zero;
+        transform.localPosition = Vector3.zero;
     }
 
-    public override void OnActionReceived(float[] vectorAction)
+    public override void OnActionReceived(ActionBuffers actions)
     {
-        float x = vectorAction[0];
-        float z = vectorAction[1];
+        float x = actions.ContinuousActions[0];
+        float z = actions.ContinuousActions[1];
 
-        transform.Translate(new Vector3(x, 0, z) * Time.deltaTime * speed);
+        transform.position += (new Vector3(x, 0, z) * Time.deltaTime * speed);
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(transform.position);
-        sensor.AddObservation(targetTransform.position);
+        sensor.AddObservation(transform.localPosition);
+        sensor.AddObservation(targetTransform.localPosition);
     }
 
-    public override void Heuristic(float[] actionsOut)
+    public override void Heuristic(in ActionBuffers actionsOut)
     {
-        actionsOut[0] = Input.GetAxisRaw("Horizontal");
-        actionsOut[1] = Input.GetAxisRaw("Vertical");
+        var actions = actionsOut.ContinuousActions;
+        actions[0] = Input.GetAxisRaw("Horizontal");
+        actions[1] = Input.GetAxisRaw("Vertical");
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("HEY");
         if (other.transform == targetTransform)
         {
             SetReward(1f);

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
@@ -18,23 +18,34 @@ public class ToborToGoalFinal : Agent
         // Set transforms to random position
         
         // Set Tobor to random position
-        transform.localPosition = new Vector3(
+        var vector1 = new Vector3(
             Random.Range(-5.5f, 4f),
             transform.localPosition.y,
             Random.Range(-6f, 3.5f));
         
-        // Set Goal to random position
-        targetTransform.localPosition = new Vector3(
+        var vector2 = new Vector3(
             Random.Range(6.5f, 14f),
             targetTransform.localPosition.y,
             Random.Range(-6f, 3.5f));
-        StartCoroutine(EndEpisodeAfter(5f));
+
+        if (Random.Range(0, 2) == 0)
+        {
+            transform.localPosition = vector1;
+            targetTransform.localPosition = vector2;
+        }
+        else
+        {
+            transform.localPosition = vector2;
+            targetTransform.localPosition = vector1;
+        }
+
+        StartCoroutine(EndEpisodeAfter(10f));
     }
 
     private IEnumerator EndEpisodeAfter(float time)
     {
         yield return new WaitForSeconds(time);
-        SetReward(-1f);
+        SetReward(-.5f);
         EndEpisode();
     }
 

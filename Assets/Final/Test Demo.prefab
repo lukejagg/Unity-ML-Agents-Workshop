@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 2160352824949146700}
   - component: {fileID: 2160352824949146703}
   - component: {fileID: 2160352824949146701}
+  - component: {fileID: 3776958406335193499}
   m_Layer: 0
   m_Name: Tobor
   m_TagString: Untagged
@@ -448,7 +449,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2160352824949146696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba31e29fc47b46a49a6c32e15b6ec7ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b0bc3d970904a5896f83aaee7b75313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agentParameters:
@@ -480,7 +481,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 7426dca0412f6964c8d5ef0894905dab, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 7ce7a872c363ce346868956fc8ba797b, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Tobor
@@ -502,6 +503,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
+--- !u!114 &3776958406335193499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2160352824949146696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b6042bc9a5d4aa58d931eae49442e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
 --- !u!1 &2727015856916080260
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,29 @@
+{
+    "Tobor": {
+        "checkpoints": [
+            {
+                "steps": 100001,
+                "file_path": "results\\demo4\\Tobor\\Tobor-100001.onnx",
+                "reward": 8.189024390243903,
+                "creation_time": 1649880999.111758,
+                "auxillary_file_paths": [
+                    "results\\demo4\\Tobor\\Tobor-100001.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 100001,
+            "file_path": "results\\demo4\\Tobor.onnx",
+            "reward": 8.189024390243903,
+            "creation_time": 1649880999.111758,
+            "auxillary_file_paths": [
+                "results\\demo4\\Tobor\\Tobor-100001.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.29.0",
+        "torch_version": "1.11.0+cpu"
+    }
+}
